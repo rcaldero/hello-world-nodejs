@@ -4,8 +4,8 @@
   "description": "A demo to show how Node.js applications can be built and packaged into containers on any architecture",
   "main": "app.js",
   "scripts": {
-    "run": "node ./app.js",
-    "start": "node ./app.js",
+    "run": "node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

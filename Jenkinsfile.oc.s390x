@@ -1,0 +1,49 @@
+pipeline {
+    agent {
+        label 's390x'
+    }
+
+    environment {
+        git = 'https://github.com/OpenShift-Z/hello-world-nodejs.git' // Replace with your fork of the hello-world code
+        oc_token =  credentials('octoken-s390x')                             // Replace with OpenShift Token from GUI
+        pullSecret =  credentials('pull-secret')
+        ocp_server = 'https://api.ocp1.ocp.local:6443'
+        app = 'hello-world-nodejs'
+    }
+
+    stages {
+        stage('Create Project') {
+            steps {
+                sh 'oc login --token=$oc_token --insecure-skip-tls-verify --server=$ocp_server'
+                //sh 'oc delete namespace $app --wait=true || true'
+                //sh 'oc new-project $app'
+                //sh 'oc project $app'
+                //sh 'kubectl create -f $pullSecret'
+                //sh 'oc secrets link builder 13358228-test19918811112-pull-secret'
+                //sh 'oc secrets link default 13358228-test19918811112-pull-secret'
+            }
+        }
+
+        stage('Build and deploy') {
+            steps {
+                sh 'oc new-project $app || true'
+                sh 'oc delete bc $app || true'
+                sh 'oc delete deployment $app || true'
+                sh 'oc delete service $app  || true'
+                sh 'oc delete route $app || true'
+                sh 'oc new-app $git'
+                sh 'sleep 15'
+                sh 'oc logs -f bc/$app '
+                sh 'sleep 15'
+            }
+        }
+
+        stage('Expose Route') {
+            steps {
+                sh 'oc project $app'
+                sh 'oc expose svc/$app'
+                sh 'oc get routes -o json | jq -r \'.items[0].spec.host\''
+            }
+        }
+    }
+}
