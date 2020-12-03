@@ -1,0 +1,1 @@
+Simple node.js program that prints out the architecture, operating system, bit-depth (32/64) and version of the node.js runtime. These values are used to show which architecture the container is running on and is dynamically generated at run-time.
