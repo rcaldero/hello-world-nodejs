@@ -18,22 +18,22 @@ body {
   line-height: 40px;
   color: #ecf0f1;
 }
-.content__container {
+.container {
   font-weight: 600;
   overflow: hidden;
   height: 40px;
   padding: 0 40px;
 }
-.content__container:before {
+.container:before {
   content: '[';
   left: 0;
 }
-.content__container:after {
+.container:after {
   content: ']';
   position: absolute;
   right: 0;
 }
-.content__container:after, .content__container:before {
+.container:after, .container:before {
   position: absolute;
   top: 0;
   color: #5bbda9;
@@ -46,12 +46,12 @@ body {
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
-.content__container__text {
+.text {
   display: inline;
   float: left;
   margin: 0;
 }
-.content__container__list {
+.list {
   margin-top: 0;
   padding-left: 110px;
   text-align: left;
@@ -63,7 +63,7 @@ body {
   animation-duration: 10s;
   animation-iteration-count: infinite;
 }
-.content__container__list__item {
+.item {
   line-height: 40px;
   margin: 0;
 }
