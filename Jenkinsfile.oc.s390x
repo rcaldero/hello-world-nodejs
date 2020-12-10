@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Create Project') {
             steps {
-                sh 'oc lxgin --token=$oc_token --insecure-skip-tls-verify --server=$ocp_server'
+                sh 'oc login --token=$oc_token --insecure-skip-tls-verify --server=$ocp_server'
                 //sh 'oc delete namespace $app --wait=true || true'
                 //sh 'oc new-project $app'
                 //sh 'oc project $app'
