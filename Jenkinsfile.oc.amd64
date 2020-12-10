@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         git = 'https://github.com/OpenShift-Z/hello-world-nodejs.git' // Replace with your fork of the hello-world code
-        oc_token =  credentials('octoken-x86')                               // Replace with OpenShift Token from GUI
+        oc_token =  credentials('rcaldero-secret-x86')                               // Replace with OpenShift Token from GUI
         pullSecret =  credentials('pull-secret')
         ocp_server = 'https://c101-e.us-east.containers.cloud.ibm.com:32149'
         app = 'hello-world-nodejs'
